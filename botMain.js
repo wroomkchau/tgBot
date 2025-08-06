@@ -126,7 +126,7 @@ function generateRandomBalance(min, max) {
     }).format(parseFloat(randomNumber));
 
     // 3. Форматирование без десятичной части (4,165)
-    const formattedWithoutDecimalFloor = new Intl.NumberFormat("en-US", {
+    const initFloor = new Intl.NumberFormat("de-DE", {
         maximumFractionDigits: 0,
     }).format(parseFloat(Math.floor(randomNumber)));
 
@@ -136,7 +136,7 @@ function generateRandomBalance(min, max) {
         regularFormat: regularFormat,
         fullNumber: formattedWithDecimal, // "4,165.65"
         integerPart: formattedWithoutDecimal, // "4,166"
-        integerPartFloor: formattedWithoutDecimalFloor // "4,165"
+        integerPartFloor: initFloor // "4.165"
     };
 }
 
@@ -222,7 +222,7 @@ function formatCurrentDateTime(location = 'mexico') {
     const monthIndex = parseInt(laterMonth, 10) - 1;
 
     const format2 = `${laterDay} ${monthsES[monthIndex]} ${laterYear}, ${laterHour}:${laterMinute}:${laterSecond}`;
-    const format3 = `${laterDay} ${monthsESShort[monthIndex]} ${laterYear}, ${time12h}`;
+    const format3 = `${laterDay} ${monthsESShort[monthIndex]} ${laterYear} ${time12h}`;
 
     return {
         base: format1, // 2025-08-05 18:26:17
