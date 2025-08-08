@@ -14,7 +14,6 @@ const bybitClient = new RestClientV5({
     secret: config.bybitApiSecret,
 });
 
-// const proxyAgent = new HttpsProxyAgent(config.proxyUrl);
 const bot = new TelegramBot(config.telegramToken, { polling: true });
 
 // ВЫБОР МОНЕТЫ
@@ -41,7 +40,7 @@ async function getRandomBybitCoin() {
         // 3. Выбираем случайную монету
         const randomPair =
             usdtPairs[Math.floor(Math.random() * usdtPairs.length)];
-        const position = randomPair.price24hPcnt >= 0 ? "long" : "short";
+        const position = randomPair.price24hPcnt >= 0 ? "Long" : "Short";
 
         return {
             coin: randomPair.symbol.replace("USDT", ""),
@@ -212,8 +211,8 @@ function formatCurrentDateTime(location = 'mexico') {
 
     // 2. Формат 5 agosto 2025, 18:26:17 (испанский)
     const monthsES = [
-        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+        "enero", "febrero", "marzo", "abril", "mayo", "junio",
+        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
     ];
     const monthsESShort = [
         "Ene", "Feb", "Mar", "Abr", "May", "Jun",
